@@ -1,4 +1,4 @@
 # MIPS PIPELINE 
 ## Instruction Fetch Stage 
-![TestBench Simulation on EDA Playground](./Instruction-Fetch/fetchtb.png)
-
+![Fetch testbench timing diagram](./Instruction-Fetch/fetchtb_timing_diagram.png)
+![IF stage timing diagram](./Instruction-Fetch/if_stage_timing_diagram.png)
