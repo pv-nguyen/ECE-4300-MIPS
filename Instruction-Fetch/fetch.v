@@ -18,6 +18,7 @@ module fetch(
     
     instrMem #(.MEM_SIZE 	(2**16)) u_instrMem(
         .clk   	(clk    ),
+        .rst    (rst    ), 
         .addr  	(pc_out   ),
         .instr 	(instr  )
     );
