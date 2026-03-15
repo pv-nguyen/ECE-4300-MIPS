@@ -1,22 +1,26 @@
 module instrMem#(parameter MEM_SIZE = 2**32) (
-    input wire clk,
+    input wire clk, rst,
     input wire [31:0] addr,
     output reg [31:0] instr
 );
-    reg [31:0] memory [MEM_SIZE-1:0]; //32 bit word, 2^32 slots
+    reg [31:0] memory [0:MEM_SIZE-1]; //32 bit word, 2^32 slots
 
-    assign memory[0] = 8'hA00000AA;
-    assign memory[1] = 10000011;
-    assign memory[2] = 20000022;
-    assign memory[3] = 30000033;
-    assign memory[4] = 40000044;
-    assign memory[5] = 50000055;
-    assign memory[6] = 60000066;
-    assign memory[7] = 70000077;
-    assign memory[8] = 80000088;
-    assign memory[9] = 90000099;
 
-    always @(posedge clk) begin
-        instr <= memory[addr];
+    always @(posedge clk or posedge rst) begin
+        if (rst) begin
+            memory[0] <= 32'hA00000AA;
+            memory[1] <= 32'h10000011;
+            memory[2] <= 32'h20000022;
+            memory[3] <= 32'h30000033;
+            memory[4] <= 32'h40000044;
+            memory[5] <= 32'h50000055;
+            memory[6] <= 32'h60000066;
+            memory[7] <= 32'h70000077;
+            memory[8] <= 32'h80000088;
+            memory[9] <= 32'h90000099;
+            instr <= 32'hA00000AA;
+        end else begin
+            instr <= memory[addr];
+        end
     end
 endmodule
