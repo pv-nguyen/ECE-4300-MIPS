@@ -30,10 +30,10 @@ module fetchtb ();
         $dumpvars(0, fetchtb);
         rst = 1;
         ex_mem_pc_src = 1;
-        #10 
+        #5 
         rst = 0;
         ex_mem_pc_src = 0;
-        #300
+        #125
         $finish;
     end
 
