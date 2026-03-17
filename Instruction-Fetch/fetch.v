@@ -24,8 +24,6 @@ module fetch(
     );
     
     incrementer u_incrementer(
-        .rst                (rst),
-        .clk            	(clk             ),
         .pc             	(pc_out      ),
         .incremented_pc 	(incremented_pc  )
     );

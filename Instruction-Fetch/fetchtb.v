@@ -33,7 +33,7 @@ module fetchtb ();
         #10 
         rst = 0;
         ex_mem_pc_src = 0;
-        #100
+        #300
         $finish;
     end
 
