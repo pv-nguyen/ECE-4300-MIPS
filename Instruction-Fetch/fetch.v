@@ -11,6 +11,7 @@ module fetch(
     wire [31:0] pc_next;
     
     pc u_pc(
+        .rst    (rst       ),
         .in  	(pc_next   ),
         .out 	(pc_out  ),
         .clk 	(clk  )

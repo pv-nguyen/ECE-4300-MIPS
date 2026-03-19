@@ -5,7 +5,7 @@ module ifIdLatch (
 );
     always @(posedge clk or posedge rst) begin
         if (rst) begin
-            q <= 0;
+            q <= 1;
         end else begin
             q<=d;
         end
