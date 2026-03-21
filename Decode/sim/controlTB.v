@@ -1,5 +1,4 @@
-`timescale 1ns / 1ps
-`include "../src/controlTB.v"
+timescale 1ns / 1ps
 
 module controlTB;
 
@@ -53,7 +52,7 @@ module controlTB;
         #2;
         $display("Test Complete"); 
 
-        $finish   
+        $finish;   
     end
 
     initial begin 
