@@ -47,7 +47,13 @@ module control{
                 ex <= 4'bx010;
             end
             default: begin
-                
+                $display("Opcode not recognized.");
+                wb <= 2'd0; 
+                mem <= 3'd0; 
+                ex <= 4'd0; 
             end
+        endcase 
     end
+
+endmodule
  
