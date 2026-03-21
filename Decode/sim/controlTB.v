@@ -1,3 +1,4 @@
+//iverilog -o decodeTB.vvp decodeTB.v ../src/decode.v ../src/control.v ../src/idExLatch.v ../src/registerFile.v ../src/signExtend.v
 `timescale 1ns / 1ps
 module controlTB;
 
