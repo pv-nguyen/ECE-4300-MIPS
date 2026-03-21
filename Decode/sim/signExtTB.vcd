@@ -1,0 +1,39 @@
+$date
+	Fri Mar 20 21:34:30 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module signExtTB $end
+$var wire 32 ! extended [31:0] $end
+$var reg 16 " immediate [15:0] $end
+$scope module u_signExtend $end
+$var wire 16 # immediate [15:0] $end
+$var wire 32 $ extended [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b11111111111111111000000000000011 $
+b1000000000000011 #
+b1000000000000011 "
+b11111111111111111000000000000011 !
+$end
+#1000
+b111100001111 !
+b111100001111 $
+b111100001111 "
+b111100001111 #
+#2000
+b11001100110011 !
+b11001100110011 $
+b11001100110011 "
+b11001100110011 #
+#3000

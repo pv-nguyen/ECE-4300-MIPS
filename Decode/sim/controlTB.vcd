@@ -1,0 +1,127 @@
+$date
+	Fri Mar 20 23:31:06 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module controlTB $end
+$var wire 2 ! wb [1:0] $end
+$var wire 3 " mem [2:0] $end
+$var wire 4 # ex [3:0] $end
+$var parameter 6 $ BEQ $end
+$var parameter 6 % LW $end
+$var parameter 6 & NOP $end
+$var parameter 6 ' RTYPE $end
+$var parameter 6 ( SW $end
+$var reg 1 ) clk $end
+$var reg 6 * opcode [5:0] $end
+$var reg 1 + rst $end
+$scope module DUT $end
+$var wire 1 ) clk $end
+$var wire 6 , opcode [5:0] $end
+$var wire 1 + rst $end
+$var parameter 6 - BEQ $end
+$var parameter 6 . LW $end
+$var parameter 6 / NOP $end
+$var parameter 6 0 RTYPE $end
+$var parameter 6 1 SW $end
+$var reg 4 2 ex [3:0] $end
+$var reg 3 3 mem [2:0] $end
+$var reg 2 4 wb [1:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b101011 1
+b0 0
+b100000 /
+b100011 .
+b100 -
+b101011 (
+b0 '
+b100000 &
+b100011 %
+b100 $
+$end
+#0
+$dumpvars
+b0 4
+b0 3
+b0 2
+b0 ,
+1+
+b0 *
+0)
+b0 #
+b0 "
+b0 !
+$end
+#1000
+b1100 #
+b1100 2
+b10 !
+b10 4
+1)
+#2000
+0)
+0+
+#3000
+1)
+#4000
+0)
+b100011 *
+b100011 ,
+#5000
+b1 #
+b1 2
+b10 "
+b10 3
+b11 !
+b11 4
+1)
+#6000
+0)
+b101011 *
+b101011 ,
+#7000
+bx001 #
+bx001 2
+b1 "
+b1 3
+bx !
+bx 4
+1)
+#8000
+0)
+b100 *
+b100 ,
+#9000
+bx010 #
+bx010 2
+b100 "
+b100 3
+1)
+#10000
+0)
+b100000 *
+b100000 ,
+#11000
+b0 #
+b0 2
+b0 "
+b0 3
+b0 !
+b0 4
+1)
+#12000
+0)
+b111100 *
+b111100 ,
+#13000
+1)
+#14000
+0)

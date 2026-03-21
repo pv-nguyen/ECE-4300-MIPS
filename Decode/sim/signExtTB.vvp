@@ -1,0 +1,60 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000002583b0dafd0 .scope module, "signExtTB" "signExtTB" 2 4;
+ .timescale -9 -12;
+v000002583b132740_0 .net "extended", 31 0, L_000002583b1329c0;  1 drivers
+v000002583b1327e0_0 .var "immediate", 15 0;
+S_000002583b0dbb90 .scope module, "u_signExtend" "signExtend" 2 9, 3 3 0, S_000002583b0dafd0;
+ .timescale -9 -12;
+    .port_info 0 /INPUT 16 "immediate";
+    .port_info 1 /OUTPUT 32 "extended";
+v000002583b0dbd20_0 .net *"_ivl_1", 0 0, L_000002583b132880;  1 drivers
+v000002583b0dbdc0_0 .net *"_ivl_2", 15 0, L_000002583b132920;  1 drivers
+v000002583b0dbe60_0 .net "extended", 31 0, L_000002583b1329c0;  alias, 1 drivers
+v000002583b0dbf00_0 .net "immediate", 15 0, v000002583b1327e0_0;  1 drivers
+L_000002583b132880 .part v000002583b1327e0_0, 15, 1;
+LS_000002583b132920_0_0 .concat [ 1 1 1 1], L_000002583b132880, L_000002583b132880, L_000002583b132880, L_000002583b132880;
+LS_000002583b132920_0_4 .concat [ 1 1 1 1], L_000002583b132880, L_000002583b132880, L_000002583b132880, L_000002583b132880;
+LS_000002583b132920_0_8 .concat [ 1 1 1 1], L_000002583b132880, L_000002583b132880, L_000002583b132880, L_000002583b132880;
+LS_000002583b132920_0_12 .concat [ 1 1 1 1], L_000002583b132880, L_000002583b132880, L_000002583b132880, L_000002583b132880;
+L_000002583b132920 .concat [ 4 4 4 4], LS_000002583b132920_0_0, LS_000002583b132920_0_4, LS_000002583b132920_0_8, LS_000002583b132920_0_12;
+L_000002583b1329c0 .concat [ 16 16 0 0], v000002583b1327e0_0, L_000002583b132920;
+    .scope S_000002583b0dafd0;
+T_0 ;
+    %vpi_call 2 15 "$dumpfile", "signExtTB.vcd" {0 0 0};
+    %vpi_call 2 16 "$dumpvars", 32'sb00000000000000000000000000000000, S_000002583b0dafd0 {0 0 0};
+    %end;
+    .thread T_0;
+    .scope S_000002583b0dafd0;
+T_1 ;
+    %pushi/vec4 32771, 0, 16;
+    %store/vec4 v000002583b1327e0_0, 0, 16;
+    %delay 1000, 0;
+    %pushi/vec4 3855, 0, 16;
+    %store/vec4 v000002583b1327e0_0, 0, 16;
+    %delay 1000, 0;
+    %pushi/vec4 13107, 0, 16;
+    %store/vec4 v000002583b1327e0_0, 0, 16;
+    %delay 1000, 0;
+    %vpi_call 2 26 "$display", "Test Complete" {0 0 0};
+    %vpi_call 2 27 "$finish" {0 0 0};
+    %end;
+    .thread T_1;
+    .scope S_000002583b0dafd0;
+T_2 ;
+    %vpi_call 2 31 "$monitor", "Time=%0t immediate=%b extended=%b", $time, v000002583b1327e0_0, v000002583b132740_0 {0 0 0};
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "signExtTB.v";
+    "./../src/signExtend.v";
