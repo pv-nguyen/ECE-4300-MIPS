@@ -10,7 +10,7 @@ module registerFile #(parameter MEM_SIZE = 32)(
 reg [31:0] REG [0:MEM_SIZE-1]; 
 
 initial begin
-    REG[0] = 'h002300AA; 
+    REG[0] = 'h00000000; //queen $zero
     REG[1] = 'h10654321; 
     REG[2] = 'h00100022; 
     REG[3] = 'h8C123456; 
