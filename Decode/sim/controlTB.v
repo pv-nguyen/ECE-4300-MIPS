@@ -1,5 +1,4 @@
-timescale 1ns / 1ps
-
+`timescale 1ns / 1ps
 module controlTB;
 
     wire [1:0] wb; 

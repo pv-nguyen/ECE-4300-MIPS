@@ -1,10 +1,13 @@
-module control{
-    input wire clk, rst 
-    input wire [5:0] opcode; 
+`timescale 1ns / 1ps
+
+module control(
+    input wire clk, 
+    input wire rst,
+    input wire [5:0] opcode,
     output reg [1:0] wb, 
     output reg [2:0] mem, 
     output reg [3:0] ex 
-}; 
+); 
 
     parameter RTYPE = 6'b000000; 
     parameter LW = 6'b100011;
