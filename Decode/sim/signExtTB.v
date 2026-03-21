@@ -1,31 +1,35 @@
-timescale 1ns / 1ps 
-include "../src/signExtend.v"
+`timescale 1ns / 1ps
+`include "../src/signExtend.v"
 
-module signExtTB {
+module signExtTB;
 
-}; 
-
-reg [15:0] immediate; 
+reg  [15:0] immediate;
 wire [31:0] extended;
 
-signExtend u_signExtend(
-    .immediate 	(immediate  ),
-    .extended  	(extended   )
+signExtend u_signExtend (
+    .immediate(immediate),
+    .extended(extended)
 );
 
 initial begin
-    $dumpfile("signExtTB.vcd"); 
-    $dumpvars(0, signExtTB); 
+    $dumpfile("signExtTB.vcd");
+    $dumpvars(0, signExtTB);
 end
 
-inital begin
-    immediate = 16'b1000000000000011 
-    #1; 
-    immediate = 16'b0000111100001111
-    #1; 
-    immediate = 16'b0011001100110011
-    #1; 
-    $$display("Test Complete");
+initial begin
+    immediate = 16'b1000000000000011;
+    #1;
+    immediate = 16'b0000111100001111;
+    #1;
+    immediate = 16'b0011001100110011;
+    #1;
+    $display("Test Complete");
     $finish;
-
 end
+
+initial begin 
+    $monitor("Time=%0t immediate=%b extended=%b",
+    $time, immediate, extended);
+end
+
+endmodule
