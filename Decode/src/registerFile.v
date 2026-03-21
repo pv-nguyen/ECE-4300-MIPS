@@ -1,4 +1,4 @@
-module registerFile(parameter MEM_SIZE = 2**32)(
+module registerFile #(parameter MEM_SIZE = 32)(
     input wire clk, rst, regwrite, 
     input wire [4:0] rs, rt, rd, 
     input wire [31:0] writedata, 
@@ -29,7 +29,7 @@ always @(posedge clk) begin
     end
     else begin 
         if (regwrite) begin 
-            REG[rd] = writedata;
+            REG[rd] <= writedata;
         end
         else begin
             A_readdat1 = REG[rs]; 

@@ -1,4 +1,4 @@
-``timescale 1ns/1ps
+`timescale 1ns/1ps
 
 module registerFileTB(); 
 
@@ -7,7 +7,7 @@ reg clk, rst, regWrite;
 reg [4:0] rs, rt, rd; 
 reg [31:0] writedata; 
 
-regfile DUT (
+registerFile DUT (
     .A_readdat1(A_readdat1), 
     .B_readdat2(B_readdat2), 
     .clk(clk), 
@@ -39,8 +39,10 @@ initial begin
     #10; 
     rst = 0;
     #10; 
-    regWrite = 0;
+    regWrite = 1;
     #10; 
+    regWrite = 0;
+    #10;
     $display("Test Complete"); 
     $finish; 
 end
