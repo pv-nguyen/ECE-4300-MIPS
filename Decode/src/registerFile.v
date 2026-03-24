@@ -31,10 +31,8 @@ always @(posedge clk) begin
         if (regwrite) begin 
             REG[rd] <= writedata;
         end
-        else begin
-            A_readdat1 = REG[rs]; 
-            B_readdat2 = REG[rt]; 
-        end
+        A_readdat1 <= REG[rs]; 
+        B_readdat2 <= REG[rt]; 
 
     end
 end
