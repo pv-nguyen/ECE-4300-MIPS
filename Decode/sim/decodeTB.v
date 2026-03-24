@@ -64,23 +64,18 @@ initial begin
     mem_wb_write_data_tb = 32'h64; //populate value 
     if_id_npc_tb = 32'h0000001; //pretend program counter is updating 
     if_id_instr_tb = 32'h00a41020; //add $v0 $a1 $a0 
-    //opcode 00000 rs 00101: 5 rt 00100:4 rd 00010 funct 100000
     #2;
     rst_tb = 0; 
     #2;
     //reg write disabled, decode Rtype
     if_id_npc_tb = 32'h0000002; //pc
     if_id_instr_tb = 32'h10000008; //beq $zero, $zero, 0x8
-    //000100 00000 00000 0000000000001000
     #2; 
     if_id_npc_tb = 32'h0000003; 
     if_id_instr_tb = 32'h8c820002; //lw $v0, 2($a0)
-    //100011 00100 00010 0000000000000010
-    
     #2;
     if_id_npc_tb = 32'h0000004; 
     if_id_instr_tb = 32'hac820002; //sw $v0, 2($a0)
-    //101011 00100 00010 0000000000000010
     #2;
     if_id_npc_tb = 32'h0000005; 
     wb_reg_write_tb = 1; //write to regfile REG[2] <= h'64
