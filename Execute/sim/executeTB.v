@@ -12,6 +12,7 @@ module executeTB;
     wire [2:0] ctlm_out;
     wire [31:0] adder_out, alu_result_out, rdata2_out;
     wire [4:0] muxout_out;
+    wire zero;
 
     execute dut(
         .clk(clk),
@@ -31,7 +32,8 @@ module executeTB;
         .add_result(adder_out),
         .alu_result(alu_result_out),
         .read_dat2out(rdata2_out),
-        .five_bit_muxout(muxout_out)
+        .five_bit_muxout(muxout_out),
+        .zero(zero)
     );
     
     initial begin
@@ -63,11 +65,39 @@ module executeTB;
         npc = 32'd200; //test that the adder works, goes from 104 to 204
 
         #10; 
-        alu_op = 10;    //test the ALU, substract R-type, should give 20-12 = 8
+        alu_op = 2'b10;    //test the ALU, substract R-type, should give 20-12 = 8
         s_extend = 32'b100010; //sign extend 100010 => subtract
 
         #10;
-        rdata2 = 20; //test that changing rdata 2 makes ALU subtract 20-20 = 0, test 0 flag
+        rdata2 = 32'd20; //test that changing rdata 2 makes ALU subtract 20-20 = 0, test 0 flag
+
+        #10;
+        s_extend = 32'b100100; //test AND
+        rdata1 = 32'b111000;
+        rdata2 = 32'b001111;
+
+        #10;
+        s_extend = 32'b100101; //test OR
+        rdata1 = 32'b000111;
+        rdata2 = 32'b111000;
+
+        #10;
+        s_extend = 32'b101010; //test Set on Less than
+        rdata1 = 32'd30;
+        rdata2 = 32'd50;
+
+        #10;
+        rdata1 = 32'd60;
+
+        #10;
+        alu_op = 2'b01; //test BEQ, should subtract, 60-50 = 10
+
+        #10;
+        alu_op = 2'b00; //test LW & SW, should add 60+50 =110;
+
+        #10;
+        alu_op = 2'b10; //go back to R-Type
+
 
         #10;
         alusrc = 1; //test the mux, ALU now does 20-4 = 16
@@ -75,9 +105,11 @@ module executeTB;
         #10;
         s_extend = 32'd20; //test changing sign extend, ADD_RESULT now 220, ALU now does 20-20 = 0;
 
+
         #10;
         regdst = 0; //test fivebitmuxout changes from Instr_2016 (5) to Instr_1511 (10)
 
+        
         #15;
 
         $finish;
