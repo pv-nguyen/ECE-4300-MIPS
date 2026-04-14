@@ -36,17 +36,17 @@ module control(
                 end
                 LW: begin
                     wb <= 2'b11; 
-                    mem <= 3'b100; 
+                    mem <= 3'b010; 
                     ex <= 4'b0001;
                 end
                 SW: begin
                     wb <= 2'b00; 
-                    mem <= 3'b010; 
+                    mem <= 3'b001; 
                     ex <= 4'b0001;
                 end
                 BEQ: begin
                     wb <= 2'b00; 
-                    mem <= 3'b001; 
+                    mem <= 3'b100; 
                     ex <= 4'b0010;
                 end
                 NOP: begin
