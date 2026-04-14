@@ -4,25 +4,25 @@ Tests alu.v
 */
 module alu_test;
 // Inputs
-reg [31:0] a;
-reg [31:0] b;
-reg [2:0] control;
-// Outputs
-wire [31:0] result;
-wire zero;
+    reg [31:0] readdata1;
+    reg [31:0] muxout;
+    reg [2:0] control;
+    // Outputs
+    wire [31:0] result;
+    wire zero;
 // Instantiate the Unit Under Test (UUT)
 alu uut (
-.a(a), 
-.b(b), 
-.control(control), 
+.rdata1(areaddata1), 
+.muxoutput(muxout), 
+.sel(control), 
 .result(result), 
 .zero(zero)
 );
 initial begin
-a <= 'b1010; // 10
-b <= 'b0111; // 7
+readdata1 <= 'b1010; // 10
+muxout <= 'b0111; // 7
 control <= 'b011;
-$display("A = %b\t B = %b", a, b);
+$display("A = %b\t B = %b", readdata1, b);
 $monitor("ALUop = %b\t result = %b\t zero = %b", control, result, zero);
 #1 
 control <= 'b100;
