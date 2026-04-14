@@ -22,5 +22,6 @@ ALU CONTROL Testbench
 ALU Testbench 
 <img width="783" height="204" alt="image" src="https://github.com/user-attachments/assets/7915e2a7-2150-4f19-ac78-7bfbb712de7a" />
 
-Excecute Testbench 
-<img width="1651" height="539" alt="image" src="https://github.com/user-attachments/assets/ec43fc3e-b802-4278-8007-202e47293ab5" />
+Excecute Testbench
+<img width="1639" height="570" alt="image" src="https://github.com/user-attachments/assets/2cce2d6c-cd1e-42ce-8cd3-dbaa16614ce7" />
+
