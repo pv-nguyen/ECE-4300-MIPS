@@ -20,7 +20,7 @@ module execute(
     wire [2:0] alucontrol_out;
 
     // input to latch
-    wire [31:0] adder_out, alu_out, read_dat2;
+    wire [31:0] adder_out, alu_out;
     wire [4:0] bottom_mux_out;
     wire alu_zero;
     
@@ -32,7 +32,7 @@ module execute(
         .adder_out       	(adder_out        ),
         .alu_zero        	(alu_zero         ),
         .alu_out         	(alu_out          ),
-        .read_dat2       	(read_dat2        ),
+        .read_dat2       	(ReadData2        ),
         .mux_out         	(bottom_mux_out   ),
 
         //outputs
@@ -74,13 +74,7 @@ module execute(
         .bottom_mux_out 	(bottom_mux_out  )
     );
     
-    alu #(
-        .ALUadd 	(010  ),
-        .ALUsub 	(110  ),
-        .ALUand 	(000  ),
-        .ALUor  	(001  ),
-        .ALUslt 	(111  ))
-    u_alu(
+    alu u_alu(
         .rdata1    	(ReadData1  ),
         .muxoutput 	(top_mux_out  ),
         .sel       	(alucontrol_out   ),
@@ -89,24 +83,7 @@ module execute(
     );
     
     
-    alucontrol #(
-        .Rtype    	(10      ),
-        .lwsw     	(00      ),
-        .Itype    	(01      ),
-        .xis      	(000000  ),
-        .ALUadd   	(010     ),
-        .ALUsub   	(110     ),
-        .ALUand   	(000     ),
-        .ALUor    	(001     ),
-        .ALUslt   	(111     ),
-        .unknown  	(11      ),
-        .ALUx     	(011     ),
-        .FUNCTadd 	(100000  ),
-        .FUNCTsub 	(100010  ),
-        .FUNCTand 	(100100  ),
-        .FUNCTor  	(100101  ),
-        .FUNCTslt 	(101010  ))
-    u_alucontrol(
+    alucontrol u_alucontrol(
         .funct  	(SignExtend[5:0]   ),
         .aluop  	(ALUOp   ),
         .select 	(alucontrol_out  )

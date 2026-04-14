@@ -5,7 +5,7 @@ module executeTB;
     reg [31:0] npc, rdata1, rdata2, s_extend;
     reg [4:0] instr_2016, instr_1511;
     reg [1:0] alu_op;
-    reg [5:0] funct;
+    wire [5:0] funct;
     reg alusrc, regdst;
 
     wire [1:0] ctlwb_out; 
@@ -38,23 +38,45 @@ module executeTB;
         clk = 0;
         forever #5 clk = ~clk;
     end
-
+    assign funct = s_extend[5:0];
     initial begin
         $dumpfile("executeTB.vcd");
         $dumpvars(0, executeTB);
         // Initialize inputs
-        ctlwb_in = 2'b10; ctlm_in = 2'b01;
-        npc = 32'd100; rdata1 = 32'd10; rdata2 = 32'd20; s_extend = 32'd4;
-        instr_2016 = 5'd5; instr_1511 = 5'd10;
-        alu_op = 2'b10; funct = 6'b100000;
-        alusrc = 1; regdst = 1;
+        ctlwb_in = 2'b11; 
+        ctlm_in = 3'b010;
+        npc = 32'd100;
+        rdata1 = 32'd20; 
+        rdata2 = 32'd12; 
+        s_extend = 32'b100000; //32
+        instr_2016 = 5'd5; 
+        instr_1511 = 5'd10;
+        alu_op = 2'b10;
+        alusrc = 0; 
+        regdst = 1;
 
-        #15;
+        #10;
+        ctlwb_in = 2'b10; //test that WB and MEM go straight to output
+        ctlm_in = 3'b000;
 
-        // Modify inputs to test different scenarios
-        alusrc = 0; regdst = 0;
-        s_extend = 32'd8;
-        alu_op = 2'b01; funct = 6'b100010;
+        #10;
+        npc = 32'd200; //test that the adder works, goes from 104 to 204
+
+        #10; 
+        alu_op = 10;    //test the ALU, substract R-type, should give 20-12 = 8
+        s_extend = 32'b100010; //sign extend 100010 => subtract
+
+        #10;
+        rdata2 = 20; //test that changing rdata 2 makes ALU subtract 20-20 = 0, test 0 flag
+
+        #10;
+        alusrc = 1; //test the mux, ALU now does 20-4 = 16
+
+        #10;
+        s_extend = 32'd20; //test changing sign extend, ADD_RESULT now 220, ALU now does 20-20 = 0;
+
+        #10;
+        regdst = 0; //test fivebitmuxout changes from Instr_2016 (5) to Instr_1511 (10)
 
         #15;
 
