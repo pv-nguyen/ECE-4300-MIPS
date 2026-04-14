@@ -25,14 +25,14 @@ assign sign_mismatch = 1'b0; // Set this up so that the ALUslt conditions match
 assign sign_mismatch = rdata1[31]^muxoutput[31]; //XOR operation; only returns 1 if bits are different 
     always@(*)
         begin 
-            result <= 0;
-            case(control)
-                ALUadd: result <= rdata1 + muxoutput;
-                ALUsub: result <= rdata1 - muxoutput;
-                ALUand: result <= rdata1 & muxoutput; // changed to bit-wise AND, should not be logical AND
-                ALUor: result <= rdata1 | muxoutput; // changes to bit-wise OR,  should not be logical OR
-                ALUslt: result <= rdata1 < muxoutput ? 1 - sign_mismatch : 0 + sign_mismatch; // (0)
-                default: result <= 32'bX; // control = ALUx | *
+            result = 0;
+            case(sel)
+                ALUadd: result = rdata1 + muxoutput;
+                ALUsub: result = rdata1 - muxoutput;
+                ALUand: result = rdata1 & muxoutput; // changed to bit-wise AND, should not be logical AND
+                ALUor: result = rdata1 | muxoutput; // changes to bit-wise OR,  should not be logical OR
+                ALUslt: result = rdata1 < muxoutput ? 1 - sign_mismatch : 0 + sign_mismatch; // (0)
+                default: result = 32'bX; // control = ALUx | *
             endcase
         end
     // check to see if result is equal to zero. if it is assign it true (1), false (0) otherwise, meaning it is a non-zero number

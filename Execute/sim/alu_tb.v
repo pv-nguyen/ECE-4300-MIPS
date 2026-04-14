@@ -4,11 +4,11 @@ Tests alu.v
 */
 module alu_tb;
 // Inputs
-    wire [31:0] readdata1;
-    wire [31:0] muxout;
-    wire [2:0] control;
+    reg [31:0] readdata1;
+    reg [31:0] muxout;
+    reg [2:0] control;
     // Outputs
-    reg [31:0] result;
+    wire [31:0] result;
     wire zero;
 // Instantiate the Unit Under Test (UUT)
 alu uut (
@@ -21,11 +21,13 @@ alu uut (
 
 initial
     begin
+        $dumpfile("alu_tb.vcd"); 
+        $dumpvars(0, alu_tb);
         readdata1 = 'b1010; // 10
         muxout = 'b0111; // 7
         control = 'b011;
-        $display("A = %b\t B = %b", readdata1, b);
-        $monitor("ALUop = %b\t result = %b\t zero = %b", control, result, zero);
+        $display("A = %b\t B = %b", readdata1, muxout);
+        $monitor("ALU_Control = %b\t result = %b\t zero = %b", control, result, zero);
         #1 
         control = 'b100;
         #1 
