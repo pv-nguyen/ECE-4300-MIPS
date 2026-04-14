@@ -4,6 +4,15 @@ module execute(
     input wire [2:0] Mem,
     input wire [31:0] NPC, ReadData1, ReadData2, SignExtend,
     input wire [4:0] Instr_2016,Instr_1511
+
+    output wire [1:0] ctrl_wb_out,
+    output wire [2:0] ctrl_mem_out,
+    output wire branch,memread,memwrite,
+
+    output wire [31:0] add_result,
+    output wire zero,
+    output wire [31:0] alu_result, read_dat2out,
+    output wire [4:0] five_bit_muxout
     
 );
     //connecting wires
