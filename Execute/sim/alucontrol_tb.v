@@ -3,8 +3,8 @@ module alucontrol_tb ();
     //Wire Ports
     wire [2:0] select;
     //Register Declarations
-    reg [1:0] alu_op;
-    reg [5:0] funct;
+    wire [1:0] alu_op;
+    wire [5:0] funct;
 
     alucontrol aluccontrol1 
         (

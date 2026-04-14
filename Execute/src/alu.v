@@ -8,7 +8,7 @@ module alu(
             input wire [31:0] rdata1, // source from register
             input wire [31:0] muxoutput, // target from register
             input wire [2:0] sel,// select from alu_control
-            output reg [31:0] result, // goes to MEM Data memory and MEM/WB latch
+            output wire [31:0] result, // goes to MEM Data memory and MEM/WB latch
             output wire zero // goes to MEM Branch
             );
 
@@ -26,7 +26,7 @@ assign sign_mismatch = 1'b0; // Set this up so that the ALUslt conditions match
 assign sign_mismatch = rdata1[31]^muxoutput[31]; //XOR operation; only returns 1 if bits are different 
    
 initial
-    result <= 0;
+    result = 4'b0000;
     always@*
         case(control)
             ALUadd: result = rdata1 + muxoutput;
