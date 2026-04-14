@@ -6,7 +6,7 @@ for alu.v This bridges machine language with assembly language.
 module alucontrol(
         input wire [5:0] funct, //from ID/EX latch
         input wire [1:0] aluop,
-        output reg [2:0] select
+        output wire [2:0] select
         );
         //These are the function field paramters for Rtype.
         // ALU Op
