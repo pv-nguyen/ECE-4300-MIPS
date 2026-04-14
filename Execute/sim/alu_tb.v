@@ -23,8 +23,8 @@ initial
     begin
         $dumpfile("alu_tb.vcd"); 
         $dumpvars(0, alu_tb);
-        readdata1 = 'b1010; // 10
-        muxout = 'b0111; // 7
+        readdata1 = 'b1010; // 10 RS 
+        muxout = 'b0111; // 7 RT 
         control = 'b011;
         $display("A = %b\t B = %b", readdata1, muxout);
         $monitor("ALU_Control = %b\t result = %b\t zero = %b", control, result, zero);
@@ -33,7 +33,7 @@ initial
         #1 
         control = 'b010;
         #1 
-        control = 'b111; // result = 0 check slt
+        control = 'b111; // result = 0 check slt RS < RT 
         #1 
         control = 'b011;
         #1 
