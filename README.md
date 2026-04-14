@@ -15,3 +15,12 @@ RegisterFile Testbench
 Sign Extend Testbench 
 <img width="1709" height="133" alt="image" src="https://github.com/user-attachments/assets/7430b399-f057-4d19-99f4-ce9e9c42bfa8" />
 
+## Excecute State 
+ALU CONTROL Testbench
+<img width="784" height="109" alt="image" src="https://github.com/user-attachments/assets/1f91db18-b9d6-460d-b9d0-221a49bc1993" />
+
+ALU Testbench 
+<img width="783" height="204" alt="image" src="https://github.com/user-attachments/assets/7915e2a7-2150-4f19-ac78-7bfbb712de7a" />
+
+Excecute Testbench 
+<img width="1651" height="539" alt="image" src="https://github.com/user-attachments/assets/ec43fc3e-b802-4278-8007-202e47293ab5" />
