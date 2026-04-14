@@ -1,9 +1,9 @@
 module execute(
     input wire clk,ALUSrc,RegDst,
-    input wire [1:0] WB,ALUOp
+    input wire [1:0] WB,ALUOp,
     input wire [2:0] Mem,
     input wire [31:0] NPC, ReadData1, ReadData2, SignExtend,
-    input wire [4:0] Instr_2016,Instr_1511
+    input wire [4:0] Instr_2016,Instr_1511,
 
     output wire [1:0] ctrl_wb_out,
     output wire [2:0] ctrl_mem_out,
@@ -74,10 +74,6 @@ module execute(
         .bottom_mux_out 	(bottom_mux_out  )
     );
     
-    // output declaration of module alu
-    reg [31:0] result;
-    wire zero;
-    
     alu #(
         .ALUadd 	(010  ),
         .ALUsub 	(110  ),
@@ -92,14 +88,12 @@ module execute(
         .zero      	(alu_zero     )
     );
     
-    // output declaration of module alucontrol
-    reg [2:0] select;
     
     alucontrol #(
         .Rtype    	(10      ),
         .lwsw     	(00      ),
         .Itype    	(01      ),
-        .xis      	(XXXXXX  ),
+        .xis      	(000000  ),
         .ALUadd   	(010     ),
         .ALUsub   	(110     ),
         .ALUand   	(000     ),
