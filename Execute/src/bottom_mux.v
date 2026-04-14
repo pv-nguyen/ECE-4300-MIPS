@@ -3,5 +3,5 @@ module bottom_mux (
     input wire RegDst,
     output wire [4:0] bottom_mux_out
 );
-    assign bottom_mux_out = (RegDst ? Instr_511:Instr_2016);
+    assign bottom_mux_out = (RegDst ? Instr_1511:Instr_2016);
 endmodule
