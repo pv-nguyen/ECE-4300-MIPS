@@ -3,15 +3,15 @@ module alucontrol_tb ();
     //Wire Ports
     wire [2:0] select;
     //Register Declarations
-    wire [1:0] alu_op;
-    wire [5:0] funct;
+    reg [1:0] alu_op;
+    reg [5:0] funct;
 
-    alucontrol aluccontrol1 
-        (
-        .select(select),
-        .aluop(alu_op), 
-        .funct(funct) 
-        );
+alucontrol aluccontrol1 
+    (
+    .select(select),
+    .aluop(alu_op), 
+    .funct(funct) 
+    );
 
 initial 
     begin

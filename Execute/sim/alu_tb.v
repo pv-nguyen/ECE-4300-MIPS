@@ -8,11 +8,11 @@ module alu_tb;
     wire [31:0] muxout;
     wire [2:0] control;
     // Outputs
-    wire [31:0] result;
+    reg [31:0] result;
     wire zero;
 // Instantiate the Unit Under Test (UUT)
 alu uut (
-            .rdata1(areaddata1), 
+            .rdata1(readdata1), 
             .muxoutput(muxout), 
             .sel(control), 
             .result(result), 
