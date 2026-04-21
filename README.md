@@ -23,5 +23,6 @@ ALU Testbench
 <img width="783" height="204" alt="image" src="https://github.com/user-attachments/assets/7915e2a7-2150-4f19-ac78-7bfbb712de7a" />
 
 Excecute Testbench
-<img width="1639" height="570" alt="image" src="https://github.com/user-attachments/assets/2cce2d6c-cd1e-42ce-8cd3-dbaa16614ce7" />
+<img width="1668" height="580" alt="image" src="https://github.com/user-attachments/assets/bc26398d-b827-465f-be1d-3f9adb851fb9" />
+
 
