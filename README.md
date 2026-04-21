@@ -25,4 +25,6 @@ ALU Testbench
 Excecute Testbench
 <img width="1668" height="580" alt="image" src="https://github.com/user-attachments/assets/bc26398d-b827-465f-be1d-3f9adb851fb9" />
 
+Memory Testbench
+<img width="1657" height="398" alt="image" src="https://github.com/user-attachments/assets/c8315c07-32c2-43dd-a375-73465a541ba0" />
 
