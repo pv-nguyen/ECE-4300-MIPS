@@ -1,29 +1,36 @@
 module memoryTB();
-    reg clk;
-    reg [31:0] ALUResult, WriteData;
-    reg [4:0] WriteReg;
-    reg [1:0] WB;
-    reg MemWrite, MemRead, Branch, Zero;
-    wire [31:0] ReadData, ALUResult_out;
-    wire [4:0] WriteReg_out;
+    reg clk,ex_memwrite, ex_memread, ex_branch, Zero;
+    reg [31:0] ex_alu_result, ex_read_dat2;
+    reg [4:0] ex_writereg;
+    reg [1:0] ex_wb;
+
+    wire [31:0] WriteData;
+    wire RegWrite;
+    wire [31:0] ALUResult_out;
+    wire [4:0] mem_write_reg;
     wire [1:0] WBControl_out;
     wire PCSrc;
 
+
+
     memory uut (
         .clk(clk),
-        .alu_result(ALUResult),
+        .ex_alu_result(ex_alu_result),
+        .ex_ctrl_wb(ex_wb),
+        .ex_five_bit_muxout(ex_writereg),
+        .ex_memwrite(ex_memwrite),
+        .ex_memread(ex_memread),
+        .ex_membranch(ex_branch),
+        .ex_Zero(Zero),
+        .ex_read_dat2(ex_read_dat2),
+
+        .RegWrite(RegWrite),
         .write_data(WriteData),
-        .mem_write_reg(WriteReg),
-        .ctrl_wb(WBControl),
-        .memwrite(MemWrite),
-        .memread(MemRead),
-        .membranch(Branch),
-        .Zero(Zero),
-        .read_dat2(ReadData),
-        .RegWrite(WriteReg_out),
-        .write_data(WriteDate_out), 
-        .mem_write_reg(MemWriteReg) 
+        .mem_write_reg(mem_write_reg),
+        .PCSrc(PCSrc)
     );
+
+
     initial begin
         $dumpfile("memoryTB.vcd"); 
         $dumpvars(0, memoryTB);
@@ -33,32 +40,48 @@ module memoryTB();
     end
 
     initial begin
-     // Mem Read
-    ALUResult = 32'h00000004;
-    WriteData = 32'h12345678;
-    WriteReg = 5'h02;
-    WBControl = 2'b01;
-    MemWrite = 0;
-    MemRead = 1;
-    Branch = 0;
-    Zero = 0;
+        // Mem Read
+        ex_alu_result = 32'h00000004;
+        ex_read_dat2 = 32'h12345678;
+        ex_writereg = 5'h02;
+        ex_wb = 2'b01;
+        ex_memwrite = 0;
+        ex_memread = 1;
+        ex_branch = 0;
+        Zero = 0;
 
-    #10; 
+        #10; 
+        ex_alu_result = 32'h00000003;
+        #10;
+        ex_alu_result = 32'h00000002;
+        #10;
+        ex_memwrite = 1;
+        #10;
+        ex_read_dat2 = 32'h67;
+        #10;
+        ex_read_dat2 = 32'h21;
+        #10;
+        ex_memwrite = 0;
+        #10;
+        ex_read_dat2 = 32'h76;
+        #10;
+        ex_wb = 2'b10;
+        #10;
+        ex_alu_result = 32'h04;
+        #10;
+        ex_writereg = 5'h01;
+        #10;
+        ex_branch = 1;
+        #10;
+        Zero = 1;
+        #10;
+        ex_wb = 2'b11;
+        #10;
+        ex_memread = 0;
+        #10;
+        ex_alu_result = 32'h03;
 
-    // Mem Write
-    MemWrite = 1;
-    MemRead = 0;
-    #10; // Allow write to occur
-    MemWrite = 0;
-    MemRead = 1;
-    #10; // Verify write by reading back
-
-    // Branch
-    Branch = 1;
-    Zero = 1;
-    #10; // Check PCSrc
-
-    $finish;
-end
+        $finish;
+    end
 endmodule
 

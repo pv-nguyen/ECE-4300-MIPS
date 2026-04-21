@@ -12,7 +12,7 @@ module memWbLatch (
     always @(posedge clk) begin
         RegWrite <= ctrl_wb[1];
         MemtoReg <= ctrl_wb[0];
-        read_dat_out <= read_dat;
+        read_dat_out <= read_dat_in;
         mem_alu_result <= alu_result;
         mem_write_reg <= five_bit_muxout;
     end
