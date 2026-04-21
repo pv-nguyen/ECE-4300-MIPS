@@ -1,7 +1,7 @@
 module memWbLatch (
     input wire [1:0] ctrl_wb, 
     input wire clk,
-    input wire [31:0] read_dat, alu_result,
+    input wire [31:0] read_dat_in, alu_result,
     input wire [4:0] five_bit_muxout,
 
     output reg RegWrite, MemtoReg,
