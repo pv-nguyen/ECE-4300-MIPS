@@ -36,7 +36,7 @@ module fetch(
         .address 	(pc_next  )
     );
     
-    ifIdLatch u_instrMem_Latch(
+    ifIdLatch u_instrMem_Latch #(.ResetValue(32'b1000_0000_0000_0000_0000_0000_0000_0000))(
         .rst    (       rst) ,
         .clk 	(clk  ),
         .d   	(instr    ),
