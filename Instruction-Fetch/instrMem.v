@@ -59,7 +59,7 @@ module instrMem#(parameter MEM_SIZE = 2**32) (
             memory[21] <= 32'b1000_0000_0000_0000_0000_0000_0000_0000; 
             memory[22] <= 32'b1000_0000_0000_0000_0000_0000_0000_0000; 
             memory[23] <= 32'b1000_0000_0000_0000_0000_0000_0000_0000;
-            instr <= memory[0];
+            instr <= memory[32'b1000_0000_0000_0000_0000_0000_0000_0000];
         end else begin
             instr <= memory[addr];
         end
