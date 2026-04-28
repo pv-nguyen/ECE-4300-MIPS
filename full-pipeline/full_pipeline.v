@@ -61,6 +61,7 @@ wire mem_wb_RegWrite;
 wire mem_wb_PCSrc;
 wire [31:0] mem_wb_write_data; 
 wire [4:0] mem_wb_write_reg;
+wire[31:0] r1,r2,r3;
 
 fetch u_fetch (
         .clk (clk),
@@ -87,7 +88,10 @@ decode u_decode (
         .id_ex_readdat2(id_ex_readdat2), //DONE
         .id_ex_sign_ext(id_ex_sign_ext), //DONE
         .id_ex_instr_bits_20_16(id_ex_instr_2016), //DONE
-        .id_ex_bits_15_11(id_ex_instr_1511) //DONE
+        .id_ex_bits_15_11(id_ex_instr_1511), //DONE
+        .r1(r1),
+        .r2(r2),
+        .r3(r3)
     );
 
 execute u_execute(
