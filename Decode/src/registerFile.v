@@ -30,9 +30,9 @@ always @(posedge clk or posedge rst) begin
     end
 
     else begin 
-        r1 <= REG[0];
-        r2 <= REG[1];
-        r3 <= REG[2];
+        r1 <= REG[1];
+        r2 <= REG[2];
+        r3 <= REG[3];
         if (regwrite) begin 
             REG[rd] <= writedata;
         end

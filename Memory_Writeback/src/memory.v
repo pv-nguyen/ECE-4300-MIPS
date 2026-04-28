@@ -43,6 +43,7 @@ module memory (
     
     data_memory u_data_memory(
         .clk(clk),
+        .rst (rst),
         .addr       	(ex_alu_result        ),
         .write_data 	(ex_read_dat2  ),
         .memread    	(ex_memread     ),
