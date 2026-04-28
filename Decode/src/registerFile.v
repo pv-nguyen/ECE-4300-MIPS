@@ -2,7 +2,8 @@ module registerFile #(parameter MEM_SIZE = 32)(
     input wire clk, rst, regwrite, 
     input wire [4:0] rs, rt, rd, 
     input wire [31:0] writedata, 
-    output reg [31:0] A_readdat1, B_readdat2 
+    output reg [31:0] A_readdat1, B_readdat2 ,
+    output reg [31:0] r1, r2, r3
 ); 
 
 //is this right?  
@@ -22,12 +23,16 @@ initial begin
     REG[9] = 'h12012345; 
 end
 
-always @(posedge clk) begin 
+always @(posedge clk or posedge rst) begin 
     if (rst) begin 
         A_readdat1 = 32'd0; 
         B_readdat2 = 32'd0; 
     end
+
     else begin 
+        r1 <= REG[0];
+        r2 <= REG[1];
+        r3 <= REG[2];
         if (regwrite) begin 
             REG[rd] <= writedata;
         end
