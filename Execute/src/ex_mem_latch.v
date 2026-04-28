@@ -1,4 +1,5 @@
 module ex_mem_latch(
+    input wire rst,
     input wire clk,
     input wire [1:0] ctrl_wb_in,
     input wire [2:0] ctrl_mem_in,
@@ -17,7 +18,13 @@ module ex_mem_latch(
     output reg [4:0] five_bit_muxout
     );
 
-    always @(posedge clk) begin
+    always @(posedge clk or posedge rst) begin
+        if (rst) begin
+            zero <= 0;
+            ctrl_mem_out <= 0;
+            add_result <=0;
+
+        end else begin
         ctrl_wb_out <= ctrl_wb_in;
         ctrl_mem_out <= ctrl_mem_in;
 
@@ -30,7 +37,7 @@ module ex_mem_latch(
         alu_result <= alu_out;
         read_dat2out <= read_dat2;
         five_bit_muxout <= mux_out;
-        
+        end
     end
 
 endmodule

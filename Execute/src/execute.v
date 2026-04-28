@@ -1,5 +1,5 @@
 module execute(
-    input wire clk,ALUSrc,RegDst,
+    input wire clk,ALUSrc,RegDst,rst,
     input wire [1:0] WB,ALUOp,
     input wire [2:0] Mem,
     input wire [31:0] NPC, ReadData1, ReadData2, SignExtend,
@@ -26,6 +26,7 @@ module execute(
     
     ex_mem_latch u_ex_mem_latch(
         //inputs
+        .rst                (rst),
         .clk             	(clk              ),
         .ctrl_wb_in      	(WB      ),
         .ctrl_mem_in     	(Mem      ),

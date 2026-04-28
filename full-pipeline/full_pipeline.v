@@ -91,6 +91,7 @@ decode u_decode (
     );
 
 execute u_execute(
+        .rst(rst),
         .clk(clk), //DONE
         .WB(id_ex_wb), //DONE
         .Mem(id_ex_mem),  //DONE
