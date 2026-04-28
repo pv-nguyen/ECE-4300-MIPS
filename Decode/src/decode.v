@@ -49,8 +49,6 @@ registerFile rf0(
 );
 
 control c0(
-    //COMPLETE PARAMETERS
-    .clk(clk),
     .rst(rst ),
     .opcode(if_id_instr[31:26]),
     .wb(wb_internal),
