@@ -33,11 +33,15 @@ wire [31:0] ex_mem_readdata2;
 wire [4:0] ex_mem_muxout; 
 
 //MEM/WB LATCH OUTPUT
+wire [1:0] mem_wb_RegWrite
+wire mem_wb_PCSrc 
+wire [31:0] mem_wb_write_data 
+wire [4:0] mem_wb_write_reg
 
 fetch u_fetch (
         .clk (clk),
         .rst (rst), 
-        .ex_mem_pc_src (PC_from_ExMem), //DONE
+        .ex_mem_pc_src (mem_wb_PCSrc), //DONE
         .ex_mem_npc (PC_from_ExMem), 
         .if_id_instr (instr_from_IfId_latch), 
         .if_id_npc (NPC_from_IfId_latch), 
@@ -46,9 +50,9 @@ fetch u_fetch (
 decode u_decode (
         .clk(clk), //DONE 
         .rst(rst), //DONE
-        .wb_reg_write(wb_reg_write_tb), //FIXME
-        .wb_write_reg_location(wb_write_reg_location_tb), //FIXME
-        .mem_wb_write_data(mem_wb_write_data_tb), //FIXME
+        .wb_reg_write(mem_wb_RegWrite), //DONE
+        .wb_write_reg_location(mem_wb_write_reg), //DONE
+        .mem_wb_write_data(mem_wb_write_data), //DONE
         .if_id_instr(instr_from_IfId_latch), //DONE
         .if_id_npc(NPC_from_IfId_latch), //DONE
         .id_ex_wb(id_ex_wb), //DONE
@@ -76,7 +80,7 @@ execute u_decode(
         .ALUSrc(id_ex_execute[0]), //DONE
         .RegDst(id_ex_execute[3]), //DONE
         .ctrl_wb_out(ex_mem_wb), //DONE
-        .ctrl_mem_out([MemBranch, MemRead, MemWrite]), //NOTE: dont think this is right notation
+        .ctrl_mem_out({MemBranch, MemRead, MemWrite}), //NOTE: dont think this is right notation
         .add_result(PC_from_ExMem), //DONE
         .alu_result(ex_mem_ALU_output), //DONE
         .read_dat2out(ex_mem_readdata2), //DONE
@@ -85,20 +89,20 @@ execute u_decode(
     );
 
 memory u_memory (
-        .clk(clk), //FIXME
-        .ex_alu_result(ex_alu_result), //FIXME
-        .ex_ctrl_wb(ex_wb), //FIXME
-        .ex_five_bit_muxout(ex_writereg), //FIXME 
-        .ex_memwrite(ex_memwrite), //FIXME
-        .ex_memread(ex_memread), //FIXME
-        .ex_membranch(ex_branch), //FIXME
-        .ex_Zero(Zero), //FIXME
-        .ex_read_dat2(ex_read_dat2), //FIXME
+        .clk(clk), //DONE
+        .ex_alu_result(ex_mem_ALU_output), //DONE
+        .ex_ctrl_wb(ex_mem_wb), //DONE
+        .ex_five_bit_muxout(ex_mem_muxout), //DONE 
+        .ex_memwrite(MemWrite), //DONE
+        .ex_memread(MemRead), //DONE
+        .ex_membranch(MemBranch), //DONE
+        .ex_Zero(ex_mem_zero), //DONE
+        .ex_read_dat2(ex_mem_readdata2), //DONE
 
-        .RegWrite(RegWrite), //FIXME
-        .write_data(WriteData), //FIXME
-        .mem_write_reg(mem_write_reg), //FIXME
-        .PCSrc(PCSrc) //FIXME
+        .RegWrite(mem_wb_RegWrite), //DONE
+        .write_data(mem_wb_write_data), //DONE
+        .mem_write_reg(mem_wb_write_reg), //DONE
+        .PCSrc(mem_wb_PCSrc) //DONE
 )
 
 endmodule 
