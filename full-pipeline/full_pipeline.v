@@ -91,7 +91,8 @@ decode u_decode (
         .id_ex_bits_15_11(id_ex_instr_1511), //DONE
         .r1(r1),
         .r2(r2),
-        .r3(r3)
+        .r3(r3),
+        .r0 (r0)
     );
 
 execute u_execute(
