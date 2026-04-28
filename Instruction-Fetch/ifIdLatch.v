@@ -1,5 +1,4 @@
-module ifIdLatch ( 
-    parameter ResetValue = 0, 
+module ifIdLatch #( parameter ResetValue = 0) (
     input wire clk,rst,
     input wire [31:0] d,
     output reg [31:0] q
