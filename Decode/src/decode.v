@@ -15,7 +15,7 @@ module decode(
                        id_ex_sign_ext,
     output wire [4:0] id_ex_instr_bits_20_16,
                        id_ex_bits_15_11,
-    output wire [31:0] r1, r2, r3
+    output wire [31:0] r1, r2, r3, r0
 );
 
 wire [31:0] sign_ext_internal,
@@ -44,7 +44,8 @@ registerFile rf0(
     .B_readdat2(readdat2_interal),
     .r1(    r1), 
     .r2(r2), 
-    .r3 (r3)
+    .r3 (r3),
+    .r0(r0)
 );
 
 control c0(
