@@ -18,7 +18,7 @@ module data_memory (
 //                 $display("\tDMEM[%0d] = %0b", i, DMEM[i]);
 //    end
    
-   always@(posedge clk or negedge rst) begin
+   always@(posedge clk or posedge rst) begin
         if (rst) begin 
             DMEM[0] <= 32'b0000_0000_0000_0000_0000_0000_0000_0000;
             DMEM[1] <= 32'b0000_0000_0000_0000_0000_0000_0000_0001;

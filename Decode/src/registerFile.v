@@ -25,21 +25,18 @@ end
 
 always @(posedge clk or posedge rst) begin 
     if (rst) begin 
-        A_readdat1 = 32'd0; 
-        B_readdat2 = 32'd0; 
-    end
-
-    else begin 
+        A_readdat1 <= 32'd0; 
+        B_readdat2 <= 32'd0; 
+    end else begin 
         r0 <= REG[0];
         r1 <= REG[1];
         r2 <= REG[2];
         r3 <= REG[3];
         if (regwrite) begin 
             REG[rd] <= writedata;
-        end
-        else begin
-            A_readdat1 = REG[rs]; 
-            B_readdat2 = REG[rt]; 
+        end else begin
+            A_readdat1 <= REG[rs]; 
+            B_readdat2 <= REG[rt]; 
         end
 
     end

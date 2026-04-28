@@ -120,6 +120,7 @@ execute u_execute(
 
 memory u_memory (
         .clk(clk), //DONE
+        .rst(rst),
         .ex_alu_result(ex_mem_ALU_output), //DONE
         .ex_ctrl_wb(ex_mem_wb), //DONE
         .ex_five_bit_muxout(ex_mem_muxout), //DONE 

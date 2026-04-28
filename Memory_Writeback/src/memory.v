@@ -1,5 +1,5 @@
 module memory (
-    input wire ex_membranch,ex_memwrite,ex_memread,clk, ex_Zero,
+    input wire ex_membranch,ex_memwrite,ex_memread,clk, ex_Zero,rst,
     input wire [1:0] ex_ctrl_wb,
     input wire [31:0] ex_alu_result,ex_read_dat2,
     input wire [4:0] ex_five_bit_muxout,
