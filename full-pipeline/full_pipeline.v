@@ -61,7 +61,7 @@ wire mem_wb_RegWrite;
 wire mem_wb_PCSrc;
 wire [31:0] mem_wb_write_data; 
 wire [4:0] mem_wb_write_reg;
-wire[31:0] r1,r2,r3;
+wire[31:0] r1,r2,r3, r0;
 
 fetch u_fetch (
         .clk (clk),

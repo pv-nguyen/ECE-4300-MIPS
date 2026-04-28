@@ -3,7 +3,7 @@ module registerFile #(parameter MEM_SIZE = 32)(
     input wire [4:0] rs, rt, rd, 
     input wire [31:0] writedata, 
     output reg [31:0] A_readdat1, B_readdat2 ,
-    output reg [31:0] r1, r2, r3
+    output reg [31:0] r1, r2, r3, r0
 ); 
 
 //is this right?  
@@ -30,6 +30,7 @@ always @(posedge clk or posedge rst) begin
     end
 
     else begin 
+        r0 <= REG[0];
         r1 <= REG[1];
         r2 <= REG[2];
         r3 <= REG[3];

@@ -39,37 +39,26 @@ module alucontrol(
         FUNCTslt = 6'b101010;
 initial
 select <= 0;
-always@* begin
-if (aluop == Rtype) begin
-case(funct)
-//assign the correct select value based on the function field.
-// Desired ALU action
-FUNCTadd: select <= ALUadd;
-FUNCTsub: select <= ALUsub;
-FUNCTand: select <= ALUand;
-FUNCTor: select <= ALUor;
-FUNCTslt: select <= ALUslt;
-default: select <= ALUx;
-endcase
+always@(*) begin
+    if (aluop == Rtype) begin
+            case(funct)
+            //assign the correct select value based on the function field.
+            // Desired ALU action
+            FUNCTadd: select <= ALUadd;
+            FUNCTsub: select <= ALUsub;
+            FUNCTand: select <= ALUand;
+            FUNCTor: select <= ALUor;
+            FUNCTslt: select <= ALUslt;
+            default: select <= ALUx;
+            endcase
+    end else if (aluop == lwsw) begin
+        select <= ALUadd;
+    end else if (aluop == Itype) begin
+        select <= ALUsub;
+    end else if (aluop == unknown) begin
+        select <= ALUx;
+    end else begin
+        select <= select;
     end
- 
-//Feel free to reuse any of the paramters defined above.
-//Not sure about this part 
-else if (aluop == lwsw)
-      begin
-select <= ALUadd;
-end
-else if (aluop == Itype)
-      begin
-   select <= ALUsub;
-end
-else if (aluop == unknown)
-    begin
-    select <= ALUx;
-end
-// Redundant for completness
-else begin
-select <= select;
     end
-end
 endmodule
