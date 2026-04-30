@@ -28,3 +28,5 @@ Excecute Testbench
 Memory Testbench
 <img width="1657" height="398" alt="image" src="https://github.com/user-attachments/assets/c8315c07-32c2-43dd-a375-73465a541ba0" />
 
+## Full Pipeline 
+<img width="1713" height="689" alt="image" src="https://github.com/user-attachments/assets/e4d7b6b8-80b2-4f91-80a8-300b93c2d60e" />
