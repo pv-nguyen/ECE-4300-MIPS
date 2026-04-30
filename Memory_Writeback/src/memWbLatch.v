@@ -1,7 +1,12 @@
 module memWbLatch (
+<<<<<<< HEAD
     input wire [1:0] ctrl_wb,
     input wire clk,
     input wire rst,
+=======
+    input wire [1:0] ctrl_wb, 
+    input wire clk,rst,
+>>>>>>> 5e6e12916a6944531cfabfef53f240305fddc27b
     input wire [31:0] read_dat_in, alu_result,
     input wire [4:0] five_bit_muxout,
 
@@ -10,7 +15,11 @@ module memWbLatch (
     output reg [4:0] mem_write_reg
 );
 
+<<<<<<< HEAD
     always @(posedge clk or posedge rst) begin
+=======
+    always @(posedge clk) begin
+>>>>>>> 5e6e12916a6944531cfabfef53f240305fddc27b
         if (rst) begin
             RegWrite <= 1'b0;
             MemtoReg <= 1'b0;

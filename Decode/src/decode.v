@@ -20,7 +20,7 @@ module decode(
 
 wire [31:0] sign_ext_internal,
 readdat1_internal, 
-readdat2_interal; 
+readdat2_internal; 
 wire [1:0] wb_internal; 
 wire [2:0] mem_internal; 
 wire [3:0] ex_internal; 
@@ -41,7 +41,7 @@ registerFile rf0(
     .rd(wb_write_reg_location),
     .writedata(mem_wb_write_data),
     .A_readdat1(readdat1_internal),
-    .B_readdat2(readdat2_interal),
+    .B_readdat2(readdat2_internal),
     .r1(    r1), 
     .r2(r2), 
     .r3 (r3),
@@ -49,7 +49,10 @@ registerFile rf0(
 );
 
 control c0(
+<<<<<<< HEAD
     //COMPLETE PARAMETERS
+=======
+>>>>>>> 5e6e12916a6944531cfabfef53f240305fddc27b
     .rst(rst ),
     .opcode(if_id_instr[31:26]),
     .wb(wb_internal),
@@ -66,7 +69,7 @@ idExLatch iEL0(
     .ctl_ex(ex_internal),
     .npc(if_id_npc),
     .readdat1(readdat1_internal),
-    .readdat2(readdat2_interal),
+    .readdat2(readdat2_internal),
     .sign_ext(sign_ext_internal),
     .instr_bits_20_16(if_id_instr[20:16]),
     .instr_bits_15_11(if_id_instr[15:11]),

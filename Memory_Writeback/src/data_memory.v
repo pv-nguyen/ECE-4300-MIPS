@@ -17,6 +17,7 @@ module data_memory (
             DMEM[3] <= 32'b0000_0000_0000_0000_0000_0000_0000_0011;
             DMEM[4] <= 32'b0000_0000_0000_0000_0000_0000_0000_0100;
             DMEM[5] <= 32'b0000_0000_0000_0000_0000_0000_0000_0101;
+<<<<<<< HEAD
         end else if (memwrite) begin
             DMEM[addr] <= write_data;
         end
@@ -27,6 +28,15 @@ module data_memory (
             read_data = DMEM[addr];
         end else begin
             read_data = 32'd0;
+=======
+        end else begin
+            if(memread) begin
+                    read_data <= DMEM[addr]; //grabs data at the address specified by the addr wire 
+            end
+            if (memwrite) begin
+                DMEM[addr] <= write_data; //writes data to address specified by addr wire
+            end
+>>>>>>> 5e6e12916a6944531cfabfef53f240305fddc27b
         end
     end
 endmodule 
