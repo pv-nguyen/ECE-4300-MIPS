@@ -14,10 +14,11 @@ module memory (
     
     memWbLatch u_memWbLatch(
         .ctrl_wb         	(ex_ctrl_wb          ),
-        .clk             	(clk              ),
-        .read_dat_in        (data_memory_out         ),
-        .alu_result      	(ex_alu_result       ),
-        .five_bit_muxout 	(ex_five_bit_muxout  ),
+        .clk              	(clk              ),
+        .rst              	(rst),
+        .read_dat_in      	(data_memory_out         ),
+        .alu_result       	(ex_alu_result       ),
+        .five_bit_muxout  	(ex_five_bit_muxout  ),
 
         .RegWrite        	(RegWrite         ),
         .MemtoReg        	(MemtoReg         ),

@@ -14,7 +14,6 @@ module control(
     parameter BEQ = 6'b000100;
     parameter NOP = 6'b100000;
 
-<<<<<<< HEAD
     always @(*) begin
         if (rst) begin
             wb = 2'd0;
@@ -51,51 +50,6 @@ module control(
                     wb = 2'd0;
                     mem = 3'd0;
                     ex = 4'd0;
-=======
-    initial begin 
-        wb = 2'd0; 
-        mem = 3'd0; 
-        ex = 4'd0; 
-    end
-
-    always @(*) begin
-        if (rst) begin
-            wb = 2'd0; 
-            mem = 3'd0; 
-            ex = 4'd0; 
-        end else begin
-            case(opcode)
-                RTYPE: begin 
-                    wb = 2'b10; 
-                    mem = 3'b000; 
-                    ex = 4'b1100; 
-                end
-                LW: begin
-                    wb = 2'b11; 
-                    mem = 3'b010; 
-                    ex = 4'b0001;
-                end
-                SW: begin
-                    wb = 2'b00; 
-                    mem = 3'b001; 
-                    ex = 4'b0001;
-                end
-                BEQ: begin
-                    wb = 2'b00; 
-                    mem = 3'b100; 
-                    ex = 4'b0010;
-                end
-                NOP: begin
-                    wb = 2'b00; 
-                    mem = 3'b000; 
-                    ex = 4'b0000;
-                end
-                default: begin
-                    $display("Opcode not recognized.");
-                    wb = 2'd0; 
-                    mem = 3'd0; 
-                    ex = 4'd0; 
->>>>>>> 5e6e12916a6944531cfabfef53f240305fddc27b
                 end
             endcase
         end
