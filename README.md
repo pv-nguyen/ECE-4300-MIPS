@@ -30,3 +30,10 @@ Memory Testbench
 
 ## Full Pipeline 
 <img width="1713" height="689" alt="image" src="https://github.com/user-attachments/assets/e4d7b6b8-80b2-4f91-80a8-300b93c2d60e" />
+
+## Optimized Pipeline 
+Reduced instruction code from 21 instructions to 9 instructions. 
+<img width="1342" height="704" alt="image" src="https://github.com/user-attachments/assets/6e6e2aca-ae3a-47ce-9ea8-65bd778c41f4" />
+
+new instruction set with previous instruction commented out 
+<img width="505" height="495" alt="image" src="https://github.com/user-attachments/assets/6be71927-88aa-4ce5-92cd-667967cac316" />
