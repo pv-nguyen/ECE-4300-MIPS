@@ -37,3 +37,7 @@ Reduced instruction code from 21 instructions to 9 instructions.
 
 new instruction set with previous instruction commented out 
 <img width="505" height="495" alt="image" src="https://github.com/user-attachments/assets/6be71927-88aa-4ce5-92cd-667967cac316" />
+
+## Final Optimized Pipeline Diagram
+<img width="1548" height="591" alt="image" src="https://github.com/user-attachments/assets/ebe2bb60-ebe7-46ca-93d6-b93c9bdb8861" />
+
