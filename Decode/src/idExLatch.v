@@ -8,6 +8,7 @@ module idExLatch(
                      readdat1,
                      readdat2,
                      sign_ext,
+    input wire [4:0] instr_bits_25_21,
     input wire [4:0] instr_bits_20_16,
                      instr_bits_15_11,
 
@@ -19,6 +20,7 @@ module idExLatch(
                      readdat1_out,
                      readdat2_out,
                      sign_ext_out,
+    output reg [4:0] instr_bits_25_21_out,
     output reg [4:0] instr_bits_20_16_out,
                      instr_bits_15_11_out 
 ); 
@@ -32,6 +34,7 @@ always @ (posedge clk) begin
         readdat1_out <= 0;
         readdat2_out <= 0;
         sign_ext_out <= 0;
+        instr_bits_25_21_out <= 0;
         instr_bits_20_16_out <= 0;
         instr_bits_15_11_out <= 0; 
     end else begin
@@ -42,6 +45,7 @@ always @ (posedge clk) begin
         readdat1_out <= readdat1;
         readdat2_out <= readdat2;
         sign_ext_out <= sign_ext;
+        instr_bits_25_21_out <= instr_bits_25_21;
         instr_bits_20_16_out <= instr_bits_20_16;
         instr_bits_15_11_out <= instr_bits_15_11; 
     end

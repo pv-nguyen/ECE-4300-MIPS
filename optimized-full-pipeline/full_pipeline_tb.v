@@ -10,7 +10,7 @@ module full_pipeline_tb ();
     );
 
     initial begin
-        $dumpfile("full_pipeline_tb.vcd");
+        $dumpfile("optimized_full_pipeline_tb.vcd");
         $dumpvars(0, full_pipeline_tb);
 
         clk = 0;

@@ -7,6 +7,10 @@ module executeTB;
     reg [1:0] alu_op;
     wire [5:0] funct;
     reg alusrc, regdst;
+    reg [4:0] id_ex_rs;
+    reg [4:0] mem_wb_write_reg;
+    reg [31:0] mem_wb_write_data;
+    reg mem_wb_reg_write;
 
     wire [1:0] ctlwb_out; 
     wire [2:0] ctlm_out;
@@ -27,6 +31,10 @@ module executeTB;
         .ALUOp(alu_op),
         .ALUSrc(alusrc),
         .RegDst(regdst),
+        .id_ex_rs(id_ex_rs),
+        .mem_wb_write_reg(mem_wb_write_reg),
+        .mem_wb_write_data(mem_wb_write_data),
+        .mem_wb_reg_write(mem_wb_reg_write),
         .ctrl_wb_out(ctlwb_out),
         .ctrl_mem_out(ctlm_out),
         .add_result(adder_out),
@@ -56,6 +64,10 @@ module executeTB;
         alu_op = 2'b10;
         alusrc = 0; 
         regdst = 1;
+        id_ex_rs = 5'd0;
+        mem_wb_write_reg = 5'd0;
+        mem_wb_write_data = 32'd0;
+        mem_wb_reg_write = 1'b0;
 
         #10;
         ctlwb_in = 2'b10; //test that WB and MEM go straight to output

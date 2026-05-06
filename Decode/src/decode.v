@@ -13,6 +13,7 @@ module decode(
                        id_ex_readdat1,
                        id_ex_readdat2,
                        id_ex_sign_ext,
+    output wire [4:0] id_ex_instr_bits_25_21,
     output wire [4:0] id_ex_instr_bits_20_16,
                        id_ex_bits_15_11,
     output wire [31:0] r1, r2, r3, r0
@@ -68,6 +69,7 @@ idExLatch iEL0(
     .readdat1(readdat1_internal),
     .readdat2(readdat2_interal),
     .sign_ext(sign_ext_internal),
+    .instr_bits_25_21(if_id_instr[25:21]),
     .instr_bits_20_16(if_id_instr[20:16]),
     .instr_bits_15_11(if_id_instr[15:11]),
 
@@ -78,6 +80,7 @@ idExLatch iEL0(
     .readdat1_out(id_ex_readdat1),
     .readdat2_out(id_ex_readdat2),
     .sign_ext_out(id_ex_sign_ext),
+    .instr_bits_25_21_out(id_ex_instr_bits_25_21),
     .instr_bits_20_16_out(id_ex_instr_bits_20_16),
     .instr_bits_15_11_out(id_ex_bits_15_11)
 );

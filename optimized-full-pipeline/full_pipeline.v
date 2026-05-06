@@ -13,13 +13,14 @@
 `include "../Decode/src/registerFile.v"
 `include "../Decode/src/signExtend.v"
 
-`include "../Execute/src/execute.v"
-`include "../Execute/src/adder.v"
-`include "../Execute/src/alu.v"
-`include "../Execute/src/alucontrol.v"
-`include "../Execute/src/bottom_mux.v"
-`include "../Execute/src/ex_mem_latch.v"
-`include "../Execute/src/top_mux.v"
+`include "../optimized-execute/src/execute.v"
+`include "../optimized-execute/src/adder.v"
+`include "../optimized-execute/src/alu.v"
+`include "../optimized-execute/src/alucontrol.v"
+`include "../optimized-execute/src/bottom_mux.v"
+`include "../optimized-execute/src/ex_mem_latch.v"
+`include "../optimized-execute/src/top_mux.v"
+`include "../optimized-execute/src/forwarding.v"
 
 `include "../Memory_Writeback/src/memory.v"
 `include "../Memory_Writeback/src/and.v"
@@ -42,7 +43,8 @@ wire [31:0] id_ex_npc,
             id_ex_readdat1,
             id_ex_readdat2,
             id_ex_sign_ext;
-wire [4:0] id_ex_instr_2016,
+wire [4:0] id_ex_instr_2521,
+            id_ex_instr_2016,
             id_ex_instr_1511;
 
 //EX/MEM LATCH OUTPUT 
@@ -87,6 +89,7 @@ decode u_decode (
         .id_ex_readdat1(id_ex_readdat1), //DONE
         .id_ex_readdat2(id_ex_readdat2), //DONE
         .id_ex_sign_ext(id_ex_sign_ext), //DONE
+        .id_ex_instr_bits_25_21(id_ex_instr_2521),
         .id_ex_instr_bits_20_16(id_ex_instr_2016), //DONE
         .id_ex_bits_15_11(id_ex_instr_1511), //DONE
         .r1(r1),
@@ -106,6 +109,10 @@ execute u_execute(
         .SignExtend(id_ex_sign_ext), //DONE
         .Instr_2016(id_ex_instr_2016), //DONE
         .Instr_1511(id_ex_instr_1511), //DONE
+        .id_ex_rs(id_ex_instr_2521),
+        .mem_wb_write_reg(mem_wb_write_reg),
+        .mem_wb_write_data(mem_wb_write_data),
+        .mem_wb_reg_write(mem_wb_RegWrite),
         .ALUOp(id_ex_execute[2:1]), //DONE
         .ALUSrc(id_ex_execute[0]), //DONE
         .RegDst(id_ex_execute[3]), //DONE
